@@ -106,4 +106,4 @@ Thumbs.db
 *.wmv
 
 # tsc outDir
-build
+dist

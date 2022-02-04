@@ -10,7 +10,7 @@
   "license": "MIT",
   "volta": {
     "node": "14.17.0",
-    "yarn": "1.22.15"
+    "npm": "7.20.5"
   },
   "scripts": {
     "lint-staged": "lint-staged",

@@ -1,0 +1,28 @@
+name: Publish package to GitHub Packages
+on:
+  push:
+    branches: [master]
+
+env:
+  NODE_OPTIONS: '--experimental-modules --experimental-vm-modules --max-old-space-size=4096'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: yarn install
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: yarn run semantic-release
